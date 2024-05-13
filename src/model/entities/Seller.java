@@ -1,17 +1,24 @@
 package model.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
-public class Seller {
-	
+public class Seller implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
 	private Integer id;
 	private String name;
 	private String email;
 	private Date birthDate;
 	private Double baseSalary;
 	private Department department;
-	
+
+	public Seller() {
+
+	}
+
 	public Seller(Integer id, String name, String email, Date birthDate, Double baseSalary, Department department) {
 		this.id = id;
 		this.name = name;
@@ -71,7 +78,7 @@ public class Seller {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(baseSalary, birthDate, department, email, id, name);
+		return Objects.hash(id);
 	}
 
 	@Override
@@ -83,9 +90,7 @@ public class Seller {
 		if (getClass() != obj.getClass())
 			return false;
 		Seller other = (Seller) obj;
-		return Objects.equals(baseSalary, other.baseSalary) && Objects.equals(birthDate, other.birthDate)
-				&& Objects.equals(department, other.department) && Objects.equals(email, other.email)
-				&& Objects.equals(id, other.id) && Objects.equals(name, other.name);
+		return Objects.equals(id, other.id);
 	}
 
 	@Override
@@ -93,7 +98,5 @@ public class Seller {
 		return "Seller [id=" + id + ", name=" + name + ", email=" + email + ", birthDate=" + birthDate + ", baseSalary="
 				+ baseSalary + ", department=" + department + "]";
 	}
-	
-	
-	
+
 }
